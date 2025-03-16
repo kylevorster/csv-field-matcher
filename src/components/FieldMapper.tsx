@@ -7,6 +7,7 @@ import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { validateData } from '@/lib/csv-parser';
 import { useToast } from '@/components/ui/use-toast';
+import { useNavigate } from 'react-router-dom';
 
 const FieldMapper = () => {
   const { 
@@ -20,6 +21,7 @@ const FieldMapper = () => {
   } = useImportStore();
   const [mappedFields, setMappedFields] = useState<string[]>([]);
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   // Keep track of already-mapped fields
   useEffect(() => {
@@ -74,6 +76,7 @@ const FieldMapper = () => {
     
     // Move to validation step
     setCurrentStep(3);
+    navigate('/validation-preview');
   };
 
   return (
@@ -111,7 +114,7 @@ const FieldMapper = () => {
                       <SelectValue placeholder="Select a database field" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="">-- Skip this field --</SelectItem>
+                      <SelectItem value="_skip">-- Skip this field --</SelectItem>
                       {dbFields.map((dbField) => (
                         <SelectItem
                           key={dbField}
