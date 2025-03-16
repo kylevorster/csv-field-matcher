@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -18,6 +19,18 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				sans: [
+					'system-ui',
+					'-apple-system',
+					'BlinkMacSystemFont',
+					'Segoe UI',
+					'Roboto',
+					'Helvetica Neue',
+					'Arial',
+					'sans-serif'
+				],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -67,6 +80,15 @@ export default {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			boxShadow: {
+				'glass': '0 4px 30px rgba(0, 0, 0, 0.1)',
+				'glass-lg': '0 10px 40px rgba(0, 0, 0, 0.1)',
+				'glass-sm': '0 2px 10px rgba(0, 0, 0, 0.05)',
+				'subtle': '0 1px 3px rgba(0, 0, 0, 0.05)',
+			},
+			backdropBlur: {
+				'glass': 'blur(8px)',
 			},
 			keyframes: {
 				'accordion-down': {
